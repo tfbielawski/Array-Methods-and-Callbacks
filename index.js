@@ -1,3 +1,9 @@
+/*  Thomas Bielawski
+    Lambda School Cohort: WEB45
+    index.js
+    1.3.2 Array Methods and Callbacks
+    06/15/2021 */
+
 import { fifaData } from './fifa.js';
 
 // ⚽️ M  V P ⚽️ //
