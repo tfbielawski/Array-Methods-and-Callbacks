@@ -40,15 +40,15 @@ hint - you should be looking at the stage key inside of the objects
 function getFinals(data) 
 {
     //Filter the array and assign results to the new array
-    const newArray = data.filter(function(game) 
+    const task2FinalsArray = data.filter(function(game) 
     {
         //Return game when "Stage" equals "Final"
         return game["Stage"] === "Final";
   
     });
 
-    //Return the new array
-    return newArray;
+    //Return the array
+    return task2FinalsArray;
 }
 
 
@@ -59,7 +59,7 @@ Use the higher-order function called getYears to do the following:
 3. Return an array called years containing all of the years in the getFinals data set*/
 
 //Declare empty array to hold the output
-const task3Array = [];
+const task3YearsArray = [];
 //Define the function, pass in finals and getFinalsCB as parameters
 function getYears(finals, getFinalsCB) 
 {
@@ -67,11 +67,11 @@ function getYears(finals, getFinalsCB)
     finals.forEach(function(item)
     { 
         //Push years to new array
-        task3Array.push(item["Year"]); 
+        task3YearsArray.push(item["Year"]); 
     });
 
     //Return the years
-    return task3Array;
+    return task3YearsArray;
 }
     
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -81,11 +81,39 @@ Use the higher-order function getWinners to do the following:
 3. Determines the winner (home or away) of each `finals` game. 
 4. Returns the names of all winning countries in an array called `winners` */ 
 
-function getWinners(/* code here */) 
+//Declare empty array
+const task4WinnersArray = [];
+//Define the function, pass in getFinalsCB
+function getWinners(getFinalsCB) 
 {
-    /* code here */
-}
+    //For Each to search the array
+    getFinalsCB.forEach(function(item)
+    {
+        //If home team is greater
+        if (item["Home Team Goals"] > item["Away Team Goals"])
+        {
+            //Push home team name
+            task4WinnersArray .push(item["Home Team Name"]);
+        }
 
+        //If away team is greater
+        else if (item["Home Team Goals"] < item["Away Team Goals"])
+        {
+            //Push away team name
+            task4WinnersArray .push(item["Away Team Name"]);
+        }
+
+        //Otherwise
+        else 
+        {
+            //Push the win condition
+            task4WinnersArray .push(item["Win conditions"]);
+        }
+    });
+
+    //Return the task4WinnersArray
+    return task4WinnersArray ; 
+}
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -98,10 +126,27 @@ Use the higher-order function getWinnersByYear to do the following:
 hint: the strings returned need to exactly match the string in step 4.
  */
 
-function getWinnersByYear(/* code here */) {
-    /* code here */
-}
+//Create empty array to hold value
+const task4WinnerByNameArray = [];
+//Define the function, pass array, getYears, and getWinners as callback functions
+function getWinnersByYear(array,getYearsCB,getWinnersCB)
+{
+    //Assign to years
+    const winYears = getYearsCB(array,getFinals);
+    //Assign to winners
+    const winners = getWinnersCB(array,getFinals);
 
+    
+
+    //For loop to search
+    for(let i = 0; i < winYears.length; i++)
+    {
+        task4WinnerByNameArray.push("In ${winYears[i]}, ${winners[i]} won the world cup!");
+    }
+    //Return the array
+    return task4WinnerByNameArray;
+}
+    
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
