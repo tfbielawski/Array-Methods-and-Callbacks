@@ -11,15 +11,21 @@ import { fifaData } from './fifa.js';
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Practice accessing data by console.log-ing the following pieces of data note, you may want to filter the data first 😉*/
 
+const finals2014 = fifaData.filter(function(item)
+{ return item.Year === 2014 && item.Stage === "Final";});
+
+console.log("Task 1", finals2014);
+
 //(a) Home Team name for 2014 world cup final
-
+console.log("task 1a", finals2014[0]["Home Team Name"]);
 //(b) Away Team name for 2014 world cup final
-
+console.log("task 1b", finals2014[0]["Away Team Name"]);
 //(c) Home Team goals for 2014 world cup final
-
+console.log("task 1c", finals2014[0]["Home Team Goals"]);
 //(d) Away Team goals for 2014 world cup final
-
+console.log("task 1d", finals2014[0]["Away Team Goals"]);
 //(e) Winner of 2014 world cup final */
+console.log("task 1e", finals2014[0]["Win conditions"]);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -30,10 +36,20 @@ Use getFinals to do the following:
 hint - you should be looking at the stage key inside of the objects
 */
 
-function getFinals(/* code here */) {
-   /* code here */
-}
+//Declare the function
+function getFinals(data) 
+{
+    //Filter the array and assign results to the new array
+    const newArray = data.filter(function(game) 
+    {
+        //Return game when "Stage" equals "Final"
+        return game["Stage"] === "Final";
+  
+    });
 
+    //Return the new array
+    return newArray;
+}
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -42,12 +58,22 @@ Use the higher-order function called getYears to do the following:
 2. Receive a callback function getFinals from task 2 
 3. Return an array called years containing all of the years in the getFinals data set*/
 
-function getYears(/* code here */) {
-    /* code here */
+//Declare empty array to hold the output
+const task3Array = [];
+//Define the function, pass in finals and getFinalsCB as parameters
+function getYears(finals, getFinalsCB) 
+{
+    //For each loop to search
+    finals.forEach(function(item)
+    { 
+        //Push years to new array
+        task3Array.push(item["Year"]); 
+    });
+
+    //Return the years
+    return task3Array;
 }
-
-
-
+    
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use the higher-order function getWinners to do the following:  
 1. Receives an array
@@ -55,7 +81,8 @@ Use the higher-order function getWinners to do the following:
 3. Determines the winner (home or away) of each `finals` game. 
 4. Returns the names of all winning countries in an array called `winners` */ 
 
-function getWinners(/* code here */) {
+function getWinners(/* code here */) 
+{
     /* code here */
 }
 
