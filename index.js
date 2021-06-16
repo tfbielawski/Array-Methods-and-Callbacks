@@ -125,26 +125,25 @@ Use the higher-order function getWinnersByYear to do the following:
 
 hint: the strings returned need to exactly match the string in step 4.
  */
-
-//Create empty array to hold value
-const task4WinnerByNameArray = [];
-//Define the function, pass array, getYears, and getWinners as callback functions
-function getWinnersByYear(array,getYearsCB,getWinnersCB)
+//Define the function, pass in data (array), getYearsCB, getWinnersCB,
+function getWinnersByYear(data,getYearsCB,getWinnersCB)
 {
-    //Assign to years
-    const winYears = getYearsCB(array,getFinals);
-    //Assign to winners
-    const winners = getWinnersCB(array,getFinals);
-
-    
-
-    //For loop to search
-    for(let i = 0; i < winYears.length; i++)
+    //Declare theYears, assign getFinals to theYears
+    const theYears = getYearsCB(data,getFinals);
+    //Declare theWinners, assign getFinals to theWinners
+    const theWinners = getWinnersCB(data,getFinals);
+    //Declare empty array to hold the new data
+    const task5ArrayWinnersByYear = [];
+    //For loop to iterate the array
+    for(let i = 0; i < theYears.length; i++)
     {
-        task4WinnerByNameArray.push("In ${winYears[i]}, ${winners[i]} won the world cup!");
+        //Assign the required string to task5WinnersString
+        const task5WinnersString = `In ${theYears[i]}, ${theWinners[i]} won the world cup!`;
+        //Push the string to the new array
+        task5ArrayWinnersByYear.push(task5WinnersString);
     }
-    //Return the array
-    return task4WinnerByNameArray;
+    //Return the new array
+    return  task5ArrayWinnersByYear;
 }
     
 
@@ -159,8 +158,24 @@ Use the higher order function getAverageGoals to do the following:
  Example of invocation: getAverageGoals(getFinals(fifaData));
 */
 
-function getAverageGoals(/* code here */) {
-   /* code here */
+
+//Define the function pass in data and 
+function getAverageGoals(data, getFinalsCB)
+{
+    //reduce() method Home Team
+    const avgHomeGoals = finals2014.reduce(function (accumulator, item)
+    {
+        //Return the value
+        return accumulator + item["Home Team Goals"] / item;
+    }, 0);
+
+    //Reduce method Away Team
+    const avgAwayGoals = finals2014.reduce(function (accumulator, item)
+    {
+        return accumulator + item["Away Team Goals"] / item;
+    }, 0);
+
+    return {avgAwayGoals, avgHomeGoals};
 }
 
 
